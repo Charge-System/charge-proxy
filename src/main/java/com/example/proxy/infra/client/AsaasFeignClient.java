@@ -16,6 +16,5 @@ public interface AsaasFeignClient {
     CreateChargeResponse createCharge(@RequestBody CreateChargeRequest request);
 
     @PostMapping("/customers")
-    CreateCostumerResponse createCostumer(@RequestBody CreateCostumerRequest request
-                                            );
+    CreateCostumerResponse createCostumer(@RequestBody CreateCostumerRequest request);
 }

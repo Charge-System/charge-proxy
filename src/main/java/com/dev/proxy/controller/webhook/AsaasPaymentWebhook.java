@@ -1,6 +1,6 @@
-package com.example.proxy.controller.webhook;
+package com.dev.proxy.controller.webhook;
 
-import com.example.proxy.controller.dto.AsaasWebhookDTO;
+import com.dev.proxy.controller.dto.AsaasWebhookDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

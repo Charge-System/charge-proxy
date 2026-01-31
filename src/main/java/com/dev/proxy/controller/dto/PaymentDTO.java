@@ -1,4 +1,4 @@
-package com.example.proxy.controller.dto;
+package com.dev.proxy.controller.dto;
 
 import java.math.BigDecimal;
 

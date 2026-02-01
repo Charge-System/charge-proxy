@@ -1,21 +1,21 @@
 version: "3.9"
 
 services:
-#  server:
-#    image: charge-images/chargeproxy:1.0
-#    networks:
-#      - global
-#    ports:
-#      - "8081:8080"
-#    environment:
-#      ASAAS_URL: ${ASAAS_URL}
-#      ASAAS_TOKEN: ${ASAAS_TOKEN}
-#    deploy:
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
+  chargerproxy:
+    image: charge-images/chargeproxy:1.0
+    networks:
+      - app-charger-net
+    ports:
+      - "8081:8081"
+    environment:
+      ASAAS_URL: https://api-sandbox.asaas.com/v3
+      ASAAS_TOKEN: "$$aact_hmlg_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OjNmNWU0M2QzLTVkNTgtNDZkNi1hYWJhLTEyMDI3OTJmM2Y2YTo6JGFhY2hfNThlMmVkZTItZTBjMS00NDNjLTg5NDQtOTVhNWM0MjU1NWMz"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
-  rabbitmq:
+  chargerrabbitmq:
     image: rabbitmq:3.12-management
     ports:
       - "5672:5672"
@@ -24,7 +24,7 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
     networks:
-      - global
+      - app-charger-net
     deploy:
       mode: replicated
       replicas: 1
@@ -34,5 +34,5 @@ services:
         condition: on-failure
 
 networks:
-  global:
-    driver: overlay
+  app-charger-net:
+    external: true

@@ -1,11 +1,11 @@
 package com.dev.proxy.service;
 
 import com.dev.proxy.infra.client.AsaasFeignClient;
-import com.dev.proxy.dto.CreateChargeRequest;
-import com.dev.proxy.dto.CreateChargeResponse;
-import com.dev.proxy.dto.CreateCostumerRequest;
-import com.dev.proxy.dto.CreateCostumerResponse;
 import org.springframework.stereotype.Service;
+import proxy.dev.servicos.CriarClienteRequest;
+import proxy.dev.servicos.CriarClienteResponse;
+import proxy.dev.servicos.GerarCobrancaRequest;
+import proxy.dev.servicos.GerarCobrancaResponse;
 
 @Service
 public class AsaasProxy {
@@ -16,11 +16,19 @@ public class AsaasProxy {
         this.client = client;
     }
 
-    public CreateChargeResponse createCharge(CreateChargeRequest request) {
+    /*
+     * Objetivo: Configurar soicitação de geração de cobrança
+     * erequisição para o ASAAS
+     * */
+    public GerarCobrancaResponse createCharge(GerarCobrancaRequest request) {
         return client.createCharge(request);
     }
 
-    public CreateCostumerResponse createCostumer(CreateCostumerRequest request) {
-        return client.createCostumer(request);
+    /*
+    * Objetivo: Configurar soicitação de criação de um novo
+    * cliente e encaminhar a requisição para o ASAAS
+    * */
+    public CriarClienteResponse createCostumer(CriarClienteRequest gerarCobranca) {
+        return client.createCostumer(gerarCobranca);
     }
 }
